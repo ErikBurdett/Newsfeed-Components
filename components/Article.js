@@ -94,7 +94,7 @@ const data = [
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
-  <div class="article">
+  <div class="article"> 
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
@@ -114,3 +114,130 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const articles = document.querySelector(".articles");
+console.log(articles);
+
+
+// loops through article and creates & applies elements, content & styles 
+data.forEach(article => {
+  articles.appendChild(articleMaker(article));
+})
+
+// article maker function
+function articleMaker(articles){
+  const articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+  const articleTitle = document.createElement('h2');
+  articleTitle.textContent = articles.title;
+  articleTitle.textContent = articles.title;
+  const date = document.createElement('p');
+  date.textContent = articles.date;
+  const p1 = document.createElement('p');
+  p1.textContent = articles.firstParagraph;
+  const p2 = document.createElement('p');
+  p2.textContent = articles.secondParagraph;
+  const p3 = document.createElement('p');
+  p3.textContent = articles.thirdParagraph;
+  const button = document.createElement('span');
+  button.textContent = '+';
+  button.classList.add('expandButton');
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(date);
+  articleDiv.appendChild(p1);
+  articleDiv.appendChild(p2);
+  articleDiv.appendChild(p3);
+  articleDiv.appendChild(button);
+  button.addEventListener("click", function(e) {
+    articleDiv.classList.toggle('article-open');
+  });
+  return articleDiv;
+}
+
+data.map((obj) =>{
+  let articles = document.querySelector(".articles");
+  articles.append(articleMaker(obj));
+});
+
+
+// dont use lol
+// function articleMaker(article){
+//   const article = document.createElement('div');
+//   const title = document.createElement('h1');
+//   const date = document.createElement('p');
+//   const p1 = document.createElement('p');
+//   const p2 = document.createElement('p');
+//   const p3 = document.createElement('p');
+//   const expandButton = document.createElement('button');
+
+// }
+
+
+
+
+// // attempt1 & 2
+// // function articleMaker(article){
+  
+
+// // }
+
+
+// // function articleMaker(article){
+// //   const articleDiv = document.createElement('div')
+// //   const title = document.createElement('h1');
+// //   const date = document.createElement('p');
+// //   const p1 = document.createElement('p');
+// //   const p2 = document.createElement('p');
+// //   const p3 = document.createElement('p');
+// //   const expandButton = document.createElement('button');
+
+// //   article.appendChild(article)
+// //   article.appendChild(articleDiv)
+// //   title.appendChild(title)
+// //   date.appendChild(date)
+// //   p1.appendChild(p1)
+// //   p2.appendChild(p2)
+// //   p3.appendChild(p3)
+// //   expandButton.appendChild(expandButton)
+
+// //   article.classList.add("article");
+// //   expandButton.classList.add("expandButton");
+
+
+
+// //   return article;
+
+// // }
+// // console.log(article);
+// // 2nd attempt 
+// function articleMaker(article){
+//   const articleDiv = document.querySelector('div');
+//   articleDiv.classList.add('article');
+//   const articleTitle = document.createElement('h2');
+//   articleTitle.textContent = article.title;
+//   const date = document.createElement('p');
+//   date.classList.add('date');
+//   date.textContent = article.date;
+//   const p1 = document.createElement('p');
+//   p1.textContent = article.firstParagraph;
+//   const p2 = document.createElement('p');
+//   p2.textContent = article.secondParagraph;
+//   const p3 = document.createElement('p');
+//   p3.textContent = article.thirdParagraph;
+//   const button = document.createElement('span');
+//   button.classList.add('expandButton');
+//   button.textContent = '+';
+//   articleDiv.appendChild(articleTitle);
+//   articleDiv.appendChild(date);
+//   articleDiv.appendChild(p1);
+//   articleDiv.appendChild(p2);
+//   articleDiv.appendChild(p3);
+//   articleDiv.appendChild(button);
+//   button.addEventListener("click", function() {
+//     articleDiv.classList.toggle('article-open');
+//   });
+//   return articleDiv;
+// }
+// console.log(articleMaker(data));
+
+
